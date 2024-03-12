@@ -1,0 +1,22 @@
+npm i
+creer un .env a la racine: 
+    DATABASE_URL="postgresql://cedric_admin:admin_cedric@localhost:5432/JVC?schema=public"
+    Modifier le docker-compose.yml pour avoir les memes identifiants
+
+docker-composer up -d
+la premiere fois seulement:
+    npx prisma migrate dev
+    npx prisma migrate deploy
+
+arreter docker:
+docker stop $(docker ps -q)
+
+
+
+postman:
+    Adress: http://localhost:3000/gemini/
+    body:
+        {
+            "pathImage":"../Pictures/Actions.PNG",
+            "prompt": "Retourne moi les actions ainsi que leurs montant en euro en dessous de leur nom et leurs valeurs en pourcentage sur la droite de leur nom sous forme json [{Action : NomAction, Montant : MontantAction ,Valeur : ValeurAction}]"
+        }
